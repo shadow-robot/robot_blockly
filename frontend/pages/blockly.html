@@ -662,10 +662,14 @@
                                   Blockly.Xml.domToWorkspace(workspace, xml)
                               }
                               reader.readAsText(file)
+                              // This is done in order to allow open the same file several times in the row
+                              document.body.removeChild(file_input)
                           }
                       }, false);
+            // Hidding element from view
+            file_input.style = 'position: fixed; top: -100em'
+		    document.body.appendChild(file_input)
         }
-//        file_input.style
         file_input.click();
       }
   };
