@@ -103,9 +103,6 @@
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
-                <!-- Hidden file input -->
-                <input name="file_input" id="file_input" type="file" style="position: fixed; top: -100em"
-                       onchange="onLoadWorkspaceFileInputChanged(this); this.value=null; return false;">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
 
@@ -131,10 +128,10 @@
                                     <a href="#" onclick='sendText();'>Launch</a>
                                 </li>
                                  <li>
-                                    <a href="#" onclick="loadFromFile();">Load</a>
+                                    <a href="#" onclick="loadFromFile();">Load From File</a>
                                 </li>
                                  <li>
-                                    <a href="#" onclick="saveToFile();">Save</a>
+                                    <a href="#" onclick="saveToFile();">Save To File</a>
                                 </li>
 <!--                                 <li>
                                     <a href="#" onclick="localstorage();">Save</a>
@@ -636,22 +633,6 @@
     }
   };
 
-  function onLoadWorkspaceFileInputChanged(evt) {
-//    var files = evt.target.files;
-      var files = evt.files;
-      if (files.length > 0) {
-          var file = files[0];
-          var reader = new FileReader();
-          reader.onload = function () {
-              workspace.clear()
-              var xml = Blockly.Xml.textToDom(this.result)
-              console.log("Loading workspace from file.")
-              Blockly.Xml.domToWorkspace(workspace, xml)
-          }
-          reader.readAsText(file)
-      }
-  };
-
   function loadFromFile() {
       var can_load_file = false
       if (workspace.getAllBlocks().length > 0) {
@@ -661,7 +642,30 @@
       }
 
       if (true == can_load_file) {
-        var file_input = document.getElementById('file_input');
+        var input_field_name = 'load_workspace_from_file_input'
+        var file_input = document.getElementById(input_field_name);
+        if (null == file_input) {
+            var file_input = document.createElement('input');
+            file_input.type = 'file'
+            file_input.id = input_field_name
+            file_input.name = input_field_name
+            file_input.addEventListener('change',
+                      function (evt) {
+                          var files = evt.target.files;
+                          if (files.length > 0) {
+                              var file = files[0];
+                              var reader = new FileReader();
+                              reader.onload = function () {
+                                  workspace.clear()
+                                  var xml = Blockly.Xml.textToDom(this.result)
+                                  console.log("Loading workspace from file.")
+                                  Blockly.Xml.domToWorkspace(workspace, xml)
+                              }
+                              reader.readAsText(file)
+                          }
+                      }, false);
+        }
+//        file_input.style
         file_input.click();
       }
   };
