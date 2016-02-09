@@ -638,15 +638,18 @@
 
   function onLoadWorkspaceFileInputChanged(evt) {
 //    var files = evt.target.files;
-    var files = evt.files;
-    var file = files[0];
-    var reader = new FileReader();
-    reader.onload = function() {
-      console.log(this.result);
-      var xml = Blockly.Xml.textToDom(this.result)
-      Blockly.Xml.domToWorkspace(workspace, xml)
-    }
-    reader.readAsText(file)
+      var files = evt.files;
+      if (files.length > 0) {
+          var file = files[0];
+          var reader = new FileReader();
+          reader.onload = function () {
+              workspace.clear()
+              var xml = Blockly.Xml.textToDom(this.result)
+              console.log("Loading workspace from file.")
+              Blockly.Xml.domToWorkspace(workspace, xml)
+          }
+          reader.readAsText(file)
+      }
   };
 
   function loadFromFile() {
@@ -656,11 +659,9 @@
       } else {
         can_load_file = true
       }
-      workspace.clear()
 
       if (true == can_load_file) {
         var file_input = document.getElementById('file_input');
-        console.log("Loading workspace from file.")
         file_input.click();
       }
   };
@@ -669,7 +670,6 @@
     var filename = 'blockly_workspace.xml'
     var xml = Blockly.Xml.workspaceToDom(workspace);
     var xml_text = Blockly.Xml.domToText(xml);
-    console.log("Saving text: " + xml_text)
     var blob = new Blob([xml_text], {type: 'text/xml'});
     if(window.navigator.msSaveOrOpenBlob) {
         window.navigator.msSaveBlob(blob, filename);
