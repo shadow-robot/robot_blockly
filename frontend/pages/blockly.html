@@ -387,36 +387,34 @@
     <category id="catFunctions" custom="PROCEDURE" name="Functions"></category>
     <sep></sep>
     <category id="shadow" name="Shadow Robot" colour="306">
-        <category name="Commander">
-          <block type="initialise"></block>
-          <block type="teach_mode"></block>
-        </category>
-        <category name="Hand">
-          <block type="grasp"></block>
-          <block type="hand_joint_target"></block>
-        </category>
-        <category name="Arm">
-          <block type="arm"></block>
-          <block type="pose"></block>
-          <block type="arm_named_pose"></block>
-          <block type="arm_joint_target"></block>
-        </category>
-        <category name="Trajectory">
-          <block type="execute"></block>
-        </category>
-        <category name="Voice Recognition">
-          <block type="text_to_speech"></block>
-          <block type="word_list"></block>
-        </category>
-        <category name="ROS">
-          <block type="sleep"></block>
-        </category>
-        <category name="Warehouse Database">
-          <block type="warehouse_save"></block>
-          <block type="launch_warehouse"></block>
-        </category>
+      <block type="commander"></block>
+      <block type="safe_planning"></block>
+      <block type="compute_grasp"></block>
+      <block type="grasp_object"></block>
+      <block type="release_object"></block>
     </category>
-    </xml>
+    <category id="geometry" name="Geometry" colour="230">
+      <block type="pose"></block>
+      <block type="position"></block>
+      <block type="orientation"></block>
+      <block type="orientation_2"></block>
+    </category>
+    <category id="joints" name="Joints" colour="65">
+      <block type="joints_pose"></block>
+      <block type="get_current_pose"></block>
+    </category>
+    <category id="trajectory" name="Trajectory" colour="0">
+      <block type="combine_traj"></block>
+      <block type="plan_traj"></block>
+      <block type="play_traj"></block>
+    </category>
+    <category id="vision" name="Vision" colour="140">
+      <block type="find_objects"></block>
+      <block type="add_object"></block>
+      <block type="find_unknowns"></block>
+      <block type="find_markers"></block>
+    </category>
+  </xml>
 
 
     <!-- jQuery -->
