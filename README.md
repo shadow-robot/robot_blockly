@@ -71,8 +71,9 @@ Point your browser to: [http://localhost:8000/pages/blockly.html](http://localho
 Functions can be created with the standard in-built function blocks. If you wish to save a function as a new block, select 'Save Function' from the Builder menu. 
 You may select in which category you wish to save the new block, this can be a new category that is specified by appending '/' and the name of the new category to the existing category name, for example:
 
-Select existing category: Variables\
-Or to place block in a new category: Variables/new_category_name
+Select existing category: Variables
+
+or to place block in a new category: Variables/new_category_name
 
 The 'Function' dropdown allows you to select the function that you wish to save.
 Once 'Save' has been selected, a Javascript file will be downloaded. This file should be added to your block repository toolbox directory where the existing category Javascript files reside.
