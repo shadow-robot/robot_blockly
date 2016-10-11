@@ -76,7 +76,7 @@ Or to place block in a new category: Variables/new_category_name
 
 The 'Function' dropdown allows you to select the function that you wish to save.
 Once 'Save' has been selected, a Javascript file will be downloaded. This file should be added to your block repository toolbox directory where the existing category Javascript files reside.
-catkin_make should then be run to rebuild blocks_uncompressed.js.
+catkin_make clean and then catkin_make should be run to rebuild blocks_uncompressed.js.
 
 #### Dynamic data loading from server
 Sometimes it is convenient to load data from the server for a component.
