@@ -171,5 +171,5 @@ Blockly.appendToToolbox(`
       </block>
     </category>
     <category id="catVariables" colour="330" custom="VARIABLE" name="Variables"></category>
-    <category id="catFunctions" colour="290" custom="PROCEDURE" name="Functions"></category>
+    <category id="catFunctions" colour="290" custom="PROCEDURE" name="Methods"></category>
 `);
