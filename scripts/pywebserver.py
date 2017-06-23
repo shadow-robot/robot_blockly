@@ -78,7 +78,9 @@ class MyRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 
 Handler = MyRequestHandler
+SocketServer.TCPServer.allow_reuse_address=True
 httpd = SocketServer.TCPServer(address, Handler)
 
 print("serving at port", PORT)
 httpd.serve_forever()
+httpd.shutdown()
